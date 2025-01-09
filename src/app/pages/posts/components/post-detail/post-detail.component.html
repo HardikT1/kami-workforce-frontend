@@ -1,0 +1,22 @@
+<app-header [title]="title"></app-header>
+<div class="container p-4">
+  <div class="d-flex justify-content-end">
+    <a [routerLink]="['/users', post.userId]" class="text-decoration-none">
+      <i class="bi bi-person-fill"></i>
+    </a>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <h6 class="mb-2 text-center">{{ post.title }}</h6>
+          <p class="post-description mb-0 text-justify">
+            {{ post.body }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

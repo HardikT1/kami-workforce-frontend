@@ -1,0 +1,21 @@
+.sortable-header {
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+}
+
+.sortable-header button {
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.sortable-header span {
+    margin-left: 5px;
+    font-size: 0.8rem;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease-in-out;
+}

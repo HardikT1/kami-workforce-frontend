@@ -1,0 +1,113 @@
+<div class="container-fluid p-4">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 border-end">
+              <div
+                class="d-flex align-items-center justify-content-center gap-2"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/12081/12081037.png"
+                  width="40"
+                  height="40"
+                  alt=" Post image"
+                />
+                <div>
+                  <p class="text-secondary mb-1 small">POSTS</p>
+                  <p class="lh-1 fs-3 mb-0">{{ posts.length }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 border-end">
+              <div
+                class="d-flex align-items-center justify-content-center gap-2"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/4047/4047371.png"
+                  width="40"
+                  height="40"
+                  alt="Album image"
+                />
+                <div>
+                  <p class="text-secondary mb-1 small">ALBUMS</p>
+                  <p class="lh-1 fs-3 mb-0">{{ albums.length }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div
+                class="d-flex align-items-center justify-content-center gap-2"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/1048/1048961.png"
+                  width="40"
+                  height="40"
+                  alt="Photo image"
+                />
+                <div>
+                  <p class="text-secondary mb-1 small">PHOTOS</p>
+                  <p class="lh-1 fs-3 mb-0">{{ photos.length }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <h6 class="mb-4">
+            Recent Photos
+            <span class="text-muted">({{ recentPhotos.length }})</span>
+          </h6>
+          <div class="row g-3">
+            @for (photo of recentPhotos; track photo.id) {
+            <div class="col-6 col-md-3">
+              <img
+                [ngSrc]="photo.thumbnailUrl"
+                class="img-fluid rounded"
+                [alt]="photo.title"
+                width="300"
+                height="300"
+                priority
+              />
+              <p class="text-truncate mb-0">{{ photo.title }}</p>
+            </div>
+            } @empty {
+            <p>There are no items.</p>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+          <h6 class="mb-2">
+            Top Posts <span class="text-muted">({{ topPosts.length }})</span>
+          </h6>
+          <!-- Post List -->
+          <div class="list-group">
+            @for (post of topPosts; track post.id) {
+            <div class="list-group-item border-0 ps-0">
+              <span class="text-black-50 small d-block fw-medium">
+                &#64;{{ post.user?.username }}</span
+              >
+              <a
+                [routerLink]="['/posts', post.id]"
+                class="text-decoration-none"
+                >{{ post.title }}</a
+              >
+              <p class="text-justify mt-1 mb-0">{{ post.body }}</p>
+            </div>
+            } @empty {
+            <p>There are no items.</p>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

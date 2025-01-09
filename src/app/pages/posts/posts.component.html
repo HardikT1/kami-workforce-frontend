@@ -1,0 +1,82 @@
+<app-header [title]="title + ' Page'"></app-header>
+<div class="container my-3">
+  <!-- Page Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>Post List</h3>
+  </div>
+
+  <!-- Search and Sort -->
+  <div class="row g-3 mb-4">
+    <div class="col-md-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search Posts"
+        [(ngModel)]="params.filter"
+        (input)="onFilterChange()"
+      />
+    </div>
+    <div class="col-md-3">
+      <select
+        class="form-select"
+        [(ngModel)]="params._sort"
+        (change)="onSortChange()"
+      >
+        <option value="" disabled selected>Sort By</option>
+        <option value="title">Title</option>
+        <option value="body">Description</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <select
+        class="form-select"
+        [(ngModel)]="params._order"
+        (change)="onSortChange()"
+      >
+        <option value="" disabled selected>Sort Direction</option>
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+      </select>
+    </div>
+    <!-- <div class="col-md-3">
+      <button>clear all</button>
+    </div> -->
+  </div>
+
+  <!-- Post Grid -->
+  <div class="row g-4">
+    @for (post of posts; track post.id) {
+    <div class="col-md-4 col-lg-3">
+      <div class="card shadow-sm border-0 p-3 h-100">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="post-title">Post {{ post.id }}</h5>
+          <div class="d-flex gap-1 align-items-center">
+            <a [routerLink]="['/posts', post.id]" class="text-decoration-none">
+              <i class="bi bi-eye-fill"></i>
+            </a>
+            <a
+              [routerLink]="['/users', post.userId]"
+              class="text-decoration-none"
+            >
+              <i class="bi bi-person-fill"></i>
+            </a>
+          </div>
+        </div>
+        <p class="mb-2"><strong>Title:</strong> {{ post.title }}</p>
+        <p class="post-description mb-0">
+          <strong>Description:</strong> {{ post.body }}
+        </p>
+      </div>
+    </div>
+    } @empty {
+    <p>There are no posts.</p>
+    }
+  </div>
+  <app-pagination
+    [currentPage]="params._page"
+    [pageSize]="params._limit"
+    [totalCount]="posts.length"
+    (pageChangeEvent)="onPageChange($event)"
+  ></app-pagination>
+</div>

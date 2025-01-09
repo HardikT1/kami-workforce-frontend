@@ -1,0 +1,30 @@
+//style.scss
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+* {
+  outline: 0;
+}
+
+:root {
+  /* Color Variables */
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.ellipsis-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; /* Ensure wrapping */
+}
+
+@import "bootstrap-icons/font/bootstrap-icons.css";

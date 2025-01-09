@@ -1,0 +1,84 @@
+<app-header [title]="title + ' Page'"></app-header>
+<div class="container my-3">
+  <!-- Page Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>{{ title }}</h3>
+  </div>
+
+  <!-- Search and Sort -->
+  <div class="row g-3 mb-4">
+    <div class="col-md-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search albums"
+        [(ngModel)]="params.filter"
+        (input)="onFilterChange()"
+      />
+    </div>
+    <div class="col-md-3">
+      <select
+        class="form-select"
+        [(ngModel)]="params._sort"
+        (change)="onSortChange()"
+      >
+        <option value="" disabled selected>Sort By</option>
+        <option value="title">Title</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <select
+        class="form-select"
+        [(ngModel)]="params._order"
+        (change)="onSortChange()"
+      >
+        <option value="" disabled selected>Sort Direction</option>
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Post Grid -->
+  <div class="row g-4">
+    @for (album of albums; track album.id) {
+    <div class="col-md-4 col-lg-3">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body">
+          <h5 class="card-title fw-normal">{{ album.title }}</h5>
+          <div class="row g-2">
+            @for (photo of album?.photos; track photo.id) {
+            <div class="col-md-3">
+              <img
+                [src]="photo.thumbnailUrl"
+                class="img-fluid rounded"
+                [alt]="photo.title"
+                width="40"
+                height="40"
+              />
+            </div>
+            }
+          </div>
+          <div class="d-flex align-items-center justify-content-end gap-1">
+            <i
+              class="bi bi-folder-fill text-muted"
+              [routerLink]="['/albums', album.id]"
+            ></i>
+            <a [routerLink]="['/users', album.userId]">
+              <i class="bi bi-person-fill text-muted"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    } @empty {
+    <p>There are no posts.</p>
+    }
+  </div>
+  <app-pagination
+    [currentPage]="params._page"
+    [pageSize]="params._limit"
+    [totalCount]="albums.length"
+    (pageChangeEvent)="onPageChange($event)"
+  ></app-pagination>
+</div>

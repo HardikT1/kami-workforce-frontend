@@ -1,0 +1,25 @@
+<nav aria-label="Page navigation example" class="mt-3">
+  <ul class="pagination justify-content-start pagination-sm">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <button
+        class="page-link"
+        (click)="onPageChange(currentPage - 1)"
+        aria-label="Previous"
+      >
+        <span aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
+      </button>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <span class="page-link">{{ currentPage }} of {{ totalPages }}</span>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <button
+        class="page-link"
+        (click)="onPageChange(currentPage + 1)"
+        aria-label="Next"
+      >
+        <span aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+      </button>
+    </li>
+  </ul>
+</nav>

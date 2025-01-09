@@ -1,0 +1,24 @@
+.container-fluid {
+  .sidebar {
+    height: 100%;
+  }
+  main {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+html,
+body,
+.container-fluid {
+  height: 100%;
+}
+
+.row {
+  height: 100%;
+}
+
+main.col-md-9.col-lg-10 {
+  overflow-y: auto;
+  height: 100%;
+}
