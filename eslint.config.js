@@ -30,6 +30,22 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
+      "@angular-eslint/no-empty-lifecycle-method": "error", // Disallow empty lifecycle hooks
+      "@angular-eslint/use-injectable-provided-in": "error", // Ensure Injectable uses providedIn
+
+      // General TypeScript best practices
+      "@typescript-eslint/no-explicit-any": "warn", // Warn on use of 'any'
+      "@typescript-eslint/explicit-function-return-type": "warn", // Require return type for functions
+      "@typescript-eslint/no-unused-vars": ["warn", { args: "none" }], // No unused variables
+      "@typescript-eslint/no-non-null-assertion": "warn", // Discourage non-null assertions
+      "@typescript-eslint/consistent-type-definitions": ["error", "interface"], // Prefer 'interface' over 'type'
+
+      // Code style and readability
+      "no-console": "warn", // Avoid console statements
+      "no-debugger": "error", // Disallow debugger statements
+      "max-len": ["warn", { code: 120 }], // Enforce line length of 120
+      "arrow-body-style": ["error", "as-needed"], // Enforce concise arrow function syntax
+      "curly": ["error", "all"], // Require braces for all control statements
     },
   },
   {
@@ -38,6 +54,12 @@ module.exports = tseslint.config(
       ...angular.configs.templateRecommended,
       ...angular.configs.templateAccessibility,
     ],
-    rules: {},
+    rules: {
+      "@angular-eslint/template/no-positive-tabindex": "error", // Avoid positive tabindex
+      "@angular-eslint/template/alt-text": "error", // Require alt text for images
+      "@angular-eslint/template/banana-in-box": "error", // Prevent mismatched banana-in-a-box syntax
+      "@angular-eslint/template/click-events-have-key-events": "warn", // Ensure click has keyboard events
+      "@angular-eslint/template/no-any": "warn", // Discourage use of 'any' in templates
+    },
   }
 );
