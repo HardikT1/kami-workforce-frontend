@@ -78,7 +78,7 @@
   <app-pagination
     [currentPage]="params._page"
     [pageSize]="params._limit"
-    [totalCount]="albums.length"
+    [totalCount]="totalCount"
     (pageChangeEvent)="onPageChange($event)"
   ></app-pagination>
 </div>

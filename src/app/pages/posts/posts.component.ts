@@ -43,6 +43,9 @@ export class PostsComponent implements OnInit {
     filter: '',
   };
 
+  // total records count
+  totalCount = 0;
+
   // Subject for handling filter changes with debounce
   private filterSubject = new Subject<string>();
 
@@ -65,6 +68,7 @@ export class PostsComponent implements OnInit {
         _order: queryParams['order'] || this.params._order,
         filter: queryParams['filter'] || this.params.filter,
       };
+
       this.getAllPosts();
     });
   }
@@ -92,10 +96,13 @@ export class PostsComponent implements OnInit {
   private getAllPosts(): void {
     const { filter, ...restParams } = this.params;
     this.postsService
-      .getPostsList({ title_like: filter?.trim(), ...restParams })
+      .getPostsListWithTotalCount({ title_like: filter?.trim(), ...restParams })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: (posts) => (this.posts = posts),
+        next: (res) => {
+          this.posts = res.data || [];
+          this.totalCount = res.totalCount;
+        },
         error: (error) => console.error('Error fetching posts:', error),
       });
   }

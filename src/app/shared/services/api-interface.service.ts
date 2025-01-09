@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -8,6 +8,26 @@ import { environment } from '../../../environments/environment';
 })
 export class ApiInterfaceService {
   http = inject(HttpClient);
+
+  // GET request for HttpResponse
+  getHttp<T>(
+    path: string,
+    params?:
+      | HttpParams
+      | Record<
+          string,
+          string | number | boolean | readonly (string | number | boolean)[]
+        >
+  ): Observable<HttpResponse<T>> {
+    const options = {
+      params:
+        params instanceof HttpParams
+          ? params
+          : new HttpParams({ fromObject: params }),
+      observe: 'response' as const, // Include observe: 'response' to get full HttpResponse
+    };
+    return this.http.get<T>(environment.apiUrl + path, options);
+  }
 
   // GET request
   get<T>(

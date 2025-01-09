@@ -76,7 +76,7 @@
   <app-pagination
     [currentPage]="params._page"
     [pageSize]="params._limit"
-    [totalCount]="posts.length"
+    [totalCount]="totalCount"
     (pageChangeEvent)="onPageChange($event)"
   ></app-pagination>
 </div>

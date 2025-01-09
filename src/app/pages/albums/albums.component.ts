@@ -51,6 +51,9 @@ export class AlbumsComponent implements OnInit {
   // Subject for handling filter changes with debounce
   private filterSubject = new Subject<string>();
 
+  // total records count
+  totalCount = 0;
+
   ngOnInit(): void {
     this.handleQueryParamChanges();
 
@@ -98,11 +101,15 @@ export class AlbumsComponent implements OnInit {
   private getAllAlbums(): void {
     const { filter, ...restParams } = this.params;
     this.albumsService
-      .getAlbumbsList({ title_like: filter?.trim(), ...restParams })
+      .getAlbumbsListWithTotalCount({
+        title_like: filter?.trim(),
+        ...restParams,
+      })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: (albums) => {
-          this.albums = albums;
+        next: (res) => {
+          this.albums = res?.data;
+          this.totalCount = res.totalCount;
           const albumIds = [...new Set(this.albums.map((album) => album.id))];
           this.loadAlbumsPhotosDetails(albumIds);
         },

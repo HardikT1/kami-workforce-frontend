@@ -70,7 +70,7 @@
   <app-pagination
     [currentPage]="params._page"
     [pageSize]="params._limit"
-    [totalCount]="photos.length"
+    [totalCount]="totalCount"
     (pageChangeEvent)="onPageChange($event)"
   ></app-pagination>
 </div>

@@ -47,6 +47,9 @@ export class PhotosComponent implements OnInit {
   // Subject for handling filter changes with debounce
   private filterSubject = new Subject<string>();
 
+  // total records count
+  totalCount = 0;
+
   ngOnInit(): void {
     this.handleQueryParamChanges();
     this.setupFilterSubscription();
@@ -93,10 +96,16 @@ export class PhotosComponent implements OnInit {
   private getAllPhotos(): void {
     const { filter, ...restParams } = this.params;
     this.photosService
-      .getPhotosList({ title_like: filter?.trim(), ...restParams })
+      .getPhotosListWithTotalCount({
+        title_like: filter?.trim(),
+        ...restParams,
+      })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: (photos) => (this.photos = photos),
+        next: (res) => {
+          this.photos = res.data;
+          this.totalCount = res.totalCount;
+        },
         error: (error) => console.error('Error fetching photos:', error),
       });
   }

@@ -29,7 +29,7 @@ export class PaginationComponent {
    * Emit page value to the parent component
    * @param page - page number
    */
-  onPageChange(page: number) {
+  onPageChange(page: number): void {
     this.pageChangeEvent.emit(page);
   }
 }
