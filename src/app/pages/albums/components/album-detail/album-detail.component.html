@@ -1,0 +1,33 @@
+<app-header [title]="title"></app-header>
+<div class="container my-3">
+  <!-- Page Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>{{ albumTitle }}</h3>
+  </div>
+
+  <!-- Post Grid -->
+  <div class="row g-4">
+    @for (photo of photos; track photo.id) {
+    <div class="col-md-3 col-lg-2">
+      <div class="card shadow-sm border-0 h-100 text-center">
+        <div class="card-body">
+          <a [routerLink]="['/photos', photo.id]" class="text-decoration-none">
+            <i class="bi bi-link-45deg d-flex justify-content-end"></i
+          ></a>
+
+          <h6 class="card-title fw-normal text-start ellipsis-lines">
+            {{ photo.title }}
+          </h6>
+          <img
+            [src]="photo.thumbnailUrl"
+            class="img-fluid rounded"
+            [alt]="photo.title"
+          />
+        </div>
+      </div>
+    </div>
+    } @empty {
+    <p>There are no posts.</p>
+    }
+  </div>
+</div>

@@ -30,7 +30,7 @@ export class AlbumsService {
    * @param id - The unique identifier of the album.
    * @returns album detail
    */
-  getAlbumById(id: string): Observable<Album> {
+  getAlbumById(id: number): Observable<Album> {
     return this.apiInterfaceService.get<Album>(`/albums/${id}`);
   }
 }
