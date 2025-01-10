@@ -155,7 +155,6 @@ describe('PhotosComponent', () => {
         order: 'asc',
         filter: 'test',
       },
-      queryParamsHandling: 'merge',
       replaceUrl: true,
     });
   }));
@@ -179,7 +178,6 @@ describe('PhotosComponent', () => {
         limit: 10,
         order: 'desc',
       },
-      queryParamsHandling: 'merge',
       replaceUrl: true,
     });
   }));

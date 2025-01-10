@@ -157,7 +157,6 @@ describe('PostsComponent', () => {
         order: 'asc',
         filter: 'test',
       },
-      queryParamsHandling: 'merge',
       replaceUrl: true,
     });
   }));
@@ -181,7 +180,6 @@ describe('PostsComponent', () => {
         limit: 10,
         order: 'desc',
       },
-      queryParamsHandling: 'merge',
       replaceUrl: true,
     });
   }));

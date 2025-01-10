@@ -187,7 +187,6 @@ describe('AlbumsComponent', () => {
         order: 'asc',
         filter: 'test',
       },
-      queryParamsHandling: 'merge',
       replaceUrl: true,
     });
   }));
@@ -211,7 +210,6 @@ describe('AlbumsComponent', () => {
         limit: 10,
         order: 'desc',
       },
-      queryParamsHandling: 'merge',
       replaceUrl: true,
     });
   }));
