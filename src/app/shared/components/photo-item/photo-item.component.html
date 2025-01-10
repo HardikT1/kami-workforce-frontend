@@ -1,0 +1,14 @@
+<div class="card-body">
+  <a [routerLink]="['/photos', photo.id]" class="text-decoration-none">
+    <i class="bi bi-link-45deg d-flex justify-content-end"></i
+  ></a>
+
+  <h6 class="card-title fw-normal text-start ellipsis-lines">
+    {{ photo.title }}
+  </h6>
+  <img
+    [src]="photo.thumbnailUrl"
+    class="img-fluid rounded"
+    [alt]="photo.title"
+  />
+</div>

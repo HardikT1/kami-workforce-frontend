@@ -1,17 +1,18 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AlbumsService } from '../../services/albums.service';
 import { forkJoin } from 'rxjs';
 import { PhotosService } from '../../../photos/services/photos.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { HeaderComponent } from '../../../../shared/components/header/header.component';
 import { Photo } from '../../../photos/models/photo.model';
+import { PhotoItemComponent } from '../../../../shared/components/photo-item/photo-item.component';
 
 @Component({
   selector: 'app-album-detail',
   templateUrl: './album-detail.component.html',
   styleUrl: './album-detail.component.scss',
-  imports: [HeaderComponent, RouterLink],
+  imports: [HeaderComponent, PhotoItemComponent],
 })
 export class AlbumDetailComponent implements OnInit {
   // injecting Albums service

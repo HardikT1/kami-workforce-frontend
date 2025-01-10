@@ -1,5 +1,5 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { PhotosService } from './services/photos.service';
 import { Photo } from './models/photo.model';
@@ -9,10 +9,16 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from '../../shared/components/pagination/pagination.component';
 import { HeaderComponent } from '../../shared/components/header/header.component';
+import { PhotoItemComponent } from '../../shared/components/photo-item/photo-item.component';
 
 @Component({
   selector: 'app-photos',
-  imports: [FormsModule, PaginationComponent, RouterLink, HeaderComponent],
+  imports: [
+    FormsModule,
+    PaginationComponent,
+    HeaderComponent,
+    PhotoItemComponent,
+  ],
   templateUrl: './photos.component.html',
   styleUrl: './photos.component.scss',
 })
