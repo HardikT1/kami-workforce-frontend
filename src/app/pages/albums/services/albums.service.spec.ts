@@ -110,7 +110,7 @@ describe('AlbumsService', () => {
         });
 
       expect(apiInterfaceSpy.getHttp).toHaveBeenCalledWith(
-        '/posts',
+        '/albums',
         jasmine.any(Object)
       );
     });

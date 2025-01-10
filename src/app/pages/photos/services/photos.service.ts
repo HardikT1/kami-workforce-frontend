@@ -44,7 +44,7 @@ export class PhotosService {
     params: Partial<QueryParams> = {}
   ): Observable<ApiResponse<Photo[]>> {
     return this.apiInterfaceService
-      .getHttp<Photo[]>('/posts', convertToHttpParams(params))
+      .getHttp<Photo[]>('/photos', convertToHttpParams(params))
       .pipe(
         map((response: HttpResponse<Photo[]>) => {
           const totalCount = Number(response.headers.get('X-Total-Count')) || 0;

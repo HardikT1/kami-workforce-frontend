@@ -55,15 +55,17 @@
       </div>
     </div>
     } @empty {
-    <p>There are no posts.</p>
+    <p>There are no photos.</p>
     }
   </div>
 
   <!-- Pagination -->
+  @if(totalCount > 0){
   <app-pagination
     [currentPage]="params._page"
     [pageSize]="params._limit"
     [totalCount]="totalCount"
     (pageChangeEvent)="onPageChange($event)"
   ></app-pagination>
+  }
 </div>

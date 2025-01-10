@@ -128,7 +128,7 @@ describe('PhotosService', () => {
         });
 
       expect(apiInterfaceSpy.getHttp).toHaveBeenCalledWith(
-        '/posts',
+        '/photos',
         jasmine.any(Object)
       );
     });

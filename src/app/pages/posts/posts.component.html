@@ -2,7 +2,7 @@
 <div class="container my-3">
   <!-- Page Header -->
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3>Post List</h3>
+    <h3>{{ title }}</h3>
   </div>
 
   <!-- Search and Sort -->
@@ -75,10 +75,12 @@
     <p>There are no posts.</p>
     }
   </div>
+  @if(totalCount > 0){
   <app-pagination
     [currentPage]="params._page"
     [pageSize]="params._limit"
     [totalCount]="totalCount"
     (pageChangeEvent)="onPageChange($event)"
   ></app-pagination>
+  }
 </div>

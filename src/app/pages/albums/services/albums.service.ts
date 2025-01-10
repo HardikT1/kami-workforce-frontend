@@ -45,7 +45,7 @@ export class AlbumsService {
     params: Partial<QueryParams> = {}
   ): Observable<ApiResponse<Album[]>> {
     return this.apiInterfaceService
-      .getHttp<Album[]>('/posts', convertToHttpParams(params))
+      .getHttp<Album[]>('/albums', convertToHttpParams(params))
       .pipe(
         map((response: HttpResponse<Album[]>) => {
           const totalCount = Number(response.headers.get('X-Total-Count')) || 0;

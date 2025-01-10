@@ -26,19 +26,19 @@
           <h5 class="card-title fw-bold">Personal Information</h5>
           <div class="row mt-3 g-3">
             <div class="col-md-4">
-              <strong>Name:</strong>
+              <span class="text-black-50">Name</span>
               <p>{{ user?.name }}</p>
             </div>
             <div class="col-md-4">
-              <strong>Email:</strong>
+              <span class="text-black-50">Email</span>
               <p>{{ user?.email }}</p>
             </div>
             <div class="col-md-4">
-              <strong>Phone:</strong>
+              <span class="text-black-50">Phone</span>
               <p>{{ user?.phone }}</p>
             </div>
             <div class="col-md-4">
-              <strong>Website:</strong>
+              <span class="text-black-50">Website</span>
               <p>
                 <a href="{{ 'https://' + user?.website }}" target="_blank">{{
                   user?.website
@@ -46,7 +46,7 @@
               </p>
             </div>
             <div class="col-md-4">
-              <strong>Company:</strong>
+              <span class="text-black-50">Company</span>
               <p>{{ user?.company?.name }}</p>
             </div>
           </div>
