@@ -1,7 +1,12 @@
 .container-fluid {
   .sidebar {
     height: 100%;
+
+    .position-sticky {
+      height: calc(100% - 60px);
+    }
   }
+
   main {
     margin: 0;
     padding: 0;
