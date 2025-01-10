@@ -65,7 +65,7 @@ export class PhotosComponent implements OnInit {
    * Subscribes to query parameter changes and updates the `params` object accordingly.
    * Fetches photos whenever query parameters change.
    */
-  private handleQueryParamChanges(): void {
+  handleQueryParamChanges(): void {
     this.activatedRoute.queryParams.subscribe((queryParams) => {
       this.params = {
         ...this.params,
@@ -83,7 +83,7 @@ export class PhotosComponent implements OnInit {
    * Sets up a subscription to the filter subject with debounce and distinctUntilChanged operators.
    * Updates query parameters whenever the filter value changes.
    */
-  private setupFilterSubscription(): void {
+  setupFilterSubscription(): void {
     this.filterSubject
       .pipe(
         takeUntilDestroyed(this.destroyRef),
@@ -99,7 +99,7 @@ export class PhotosComponent implements OnInit {
   /**
    * Fetches the list of photos from the API based on the current query parameters.
    */
-  private getAllPhotos(): void {
+  getAllPhotos(): void {
     const { filter, ...restParams } = this.params;
     this.photosService
       .getPhotosListWithTotalCount({
@@ -147,7 +147,7 @@ export class PhotosComponent implements OnInit {
    * Updates the route with the current query parameters and merges them with existing ones.
    * This ensures the URL reflects the current state of pagination, sorting, and filtering.
    */
-  private async appendQueryParams(): Promise<void> {
+  async appendQueryParams(): Promise<void> {
     await this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams: {

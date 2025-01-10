@@ -24,7 +24,7 @@ export class AlbumsComponent implements OnInit {
   // Service for fetching albums data
   private albumsService = inject(AlbumsService);
 
-  // Service for fetching albums data
+  // Service for fetching photos data
   private photosService = inject(PhotosService);
 
   // ActivatedRoute for accessing query parameters from the route
@@ -64,7 +64,7 @@ export class AlbumsComponent implements OnInit {
    * Subscribes to query parameter changes and updates the `params` object accordingly.
    * Fetches posts whenever query parameters change.
    */
-  private handleQueryParamChanges(): void {
+  handleQueryParamChanges(): void {
     this.activatedRoute.queryParams.subscribe((queryParams) => {
       this.params = {
         ...this.params,
@@ -82,7 +82,7 @@ export class AlbumsComponent implements OnInit {
    * Sets up a subscription to the filter subject with debounce and distinctUntilChanged operators.
    * Updates query parameters whenever the filter value changes.
    */
-  private setupFilterSubscription(): void {
+  setupFilterSubscription(): void {
     this.filterSubject
       .pipe(
         takeUntilDestroyed(this.destroyRef),
@@ -96,9 +96,9 @@ export class AlbumsComponent implements OnInit {
   }
 
   /**
-   * Fetches the list of posts from the API based on the current query parameters.
+   * Fetches the list of albums from the API based on the current query parameters.
    */
-  private getAllAlbums(): void {
+  getAllAlbums(): void {
     const { filter, ...restParams } = this.params;
     this.albumsService
       .getAlbumbsListWithTotalCount({
@@ -121,7 +121,7 @@ export class AlbumsComponent implements OnInit {
    * Load Albums details.
    * @param albumIds - album id
    */
-  private loadAlbumsPhotosDetails(albumIds: number[]): void {
+  loadAlbumsPhotosDetails(albumIds: number[]): void {
     forkJoin(
       albumIds.map((id) => this.photosService.getPhotosList({ albumId: id }))
     )
@@ -138,7 +138,7 @@ export class AlbumsComponent implements OnInit {
    * Associate photos with each album
    * @param photos - photos list
    */
-  private enrichAlbumsWithPhotos(photos: Photo[][]): void {
+  enrichAlbumsWithPhotos(photos: Photo[][]): void {
     this.albums = this.albums.map((album, index) => ({
       ...album,
       photos: photos[index] || [],
@@ -176,7 +176,7 @@ export class AlbumsComponent implements OnInit {
    * Updates the route with the current query parameters and merges them with existing ones.
    * This ensures the URL reflects the current state of pagination, sorting, and filtering.
    */
-  private async appendQueryParams(): Promise<void> {
+  async appendQueryParams(): Promise<void> {
     console.log('appendQueryParams', this.params);
     await this.router.navigate([], {
       relativeTo: this.activatedRoute,

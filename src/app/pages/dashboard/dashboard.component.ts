@@ -20,10 +20,16 @@ import { NgOptimizedImage } from '@angular/common';
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent implements OnInit {
-  // injecting dependencies
+  // injecting post service
   private postService = inject(PostService);
+
+  // injecting albums service
   private albumsService = inject(AlbumsService);
+
+  // injecting photos service
   private photosService = inject(PhotosService);
+
+  // injecting user service
   private usersService = inject(UsersService);
 
   // to hold posts data
@@ -47,7 +53,7 @@ export class DashboardComponent implements OnInit {
   /**
    * Load dashboard data.
    */
-  private loadDashboardData(): void {
+  loadDashboardData(): void {
     forkJoin({
       posts: this.postService.getPostsList(),
       albums: this.albumsService.getAlbumbsList(),
@@ -68,7 +74,7 @@ export class DashboardComponent implements OnInit {
    * TO handle the dashboard data to properly assign to the variables.
    * @param data - contains posts, albums, photos data
    */
-  private handleDashboardData(data: {
+  handleDashboardData(data: {
     posts: Post[];
     albums: Album[];
     photos: Photo[];
@@ -87,7 +93,7 @@ export class DashboardComponent implements OnInit {
    * To fetch the user details for each post.
    * @param userIds - userid lists
    */
-  private loadUserDetails(userIds: number[]): void {
+  loadUserDetails(userIds: number[]): void {
     forkJoin(userIds.map((id) => this.usersService.getUserById(id)))
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
@@ -104,7 +110,7 @@ export class DashboardComponent implements OnInit {
    * To assign user details to specific post.
    * @param userDetails - user related details
    */
-  private enrichPostsWithUserDetails(userDetails: User[]): void {
+  enrichPostsWithUserDetails(userDetails: User[]): void {
     this.topPosts = this.topPosts.map((post) => {
       const user = userDetails.find((user) => user.id === post.userId);
       return { ...post, user };

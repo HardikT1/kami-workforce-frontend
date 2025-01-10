@@ -36,7 +36,7 @@ export class PostDetailComponent implements OnInit {
   /**
    * Fetch post details by id.
    */
-  private fetchPostDetails(id: number): void {
+  fetchPostDetails(id: number): void {
     this.postService
       .getPostById(id)
       .pipe(takeUntilDestroyed(this.destroyRef))

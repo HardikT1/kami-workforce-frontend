@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoaderService } from '../../services/loader.service';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-loader',
-  imports: [CommonModule],
+  imports: [AsyncPipe],
   templateUrl: './loader.component.html',
   styleUrl: './loader.component.scss',
 })

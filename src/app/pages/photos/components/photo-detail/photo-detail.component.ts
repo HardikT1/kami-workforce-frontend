@@ -38,7 +38,7 @@ export class PhotoDetailComponent implements OnInit {
    * Fetch the photo detaisl by id.
    * @param id - id of the photo for which to fetch the details
    */
-  private fetchPhotoDetails(id: number): void {
+  fetchPhotoDetails(id: number): void {
     this.photosService
       .getPhotoById(id)
       .pipe(takeUntilDestroyed(this.destroyRef))

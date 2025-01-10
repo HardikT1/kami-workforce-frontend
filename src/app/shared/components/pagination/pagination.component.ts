@@ -9,10 +9,10 @@ export class PaginationComponent {
   // input to get the page size
   @Input() pageSize = 10;
 
-  // input to get the page size
+  // input to get the total count
   @Input() totalCount = 0;
 
-  // input to get the page size
+  // input to get the current page number
   @Input() currentPage = 1;
 
   // page change output event

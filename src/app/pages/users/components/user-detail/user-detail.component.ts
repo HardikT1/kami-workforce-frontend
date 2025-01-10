@@ -14,8 +14,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrls: ['./user-detail.component.scss'],
 })
 export class UserDetailComponent implements OnInit {
-  // Injecting dependencies services
+  // injecting user service
   private readonly userService = inject(UsersService);
+
+  // injecting posts service
   private readonly postService = inject(PostService);
 
   // ActivatedRoute for accessing query parameters from the route
@@ -39,7 +41,7 @@ export class UserDetailComponent implements OnInit {
   /**
    * Fetch all user details including user and posts
    */
-  private fetchAllUserDetails(userId: number): void {
+  fetchAllUserDetails(userId: number): void {
     forkJoin({
       user: this.userService.getUserById(userId),
       posts: this.postService.getPostsList({ userId }),

@@ -1,10 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { RouterOutlet } from '@angular/router';
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [RouterOutlet, AppComponent, LoaderComponent],
     }).compileComponents();
   });
 
@@ -14,16 +17,27 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'kami-workforce-frontend' title`, () => {
+  it(`should have as title 'kami-workforce-frontend'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('kami-workforce-frontend');
   });
 
-  it('should render title', () => {
+  it('should render <app-loader>', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, kami-workforce-frontend');
+
+    const loaderElement = fixture.debugElement.query(By.css('app-loader'));
+    expect(loaderElement).toBeTruthy();
+  });
+
+  it('should render <router-outlet>', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+
+    const routerOutletElement = fixture.debugElement.query(
+      By.directive(RouterOutlet)
+    );
+    expect(routerOutletElement).toBeTruthy();
   });
 });
