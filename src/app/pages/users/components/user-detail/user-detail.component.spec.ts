@@ -81,7 +81,7 @@ describe('UserDetailComponent', () => {
     component.ngOnInit();
     tick();
     expect(component.fetchAllUserDetails).toHaveBeenCalledWith(1);
-    expect(component.user.name).toBe('Leanne Graham');
+    expect(component.user?.name).toBe('Leanne Graham');
     expect(component.posts.length).toBe(1);
     expect(component.posts[0].title).toBe('Post Title');
   }));

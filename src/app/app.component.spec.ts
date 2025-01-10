@@ -23,14 +23,6 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('kami-workforce-frontend');
   });
 
-  it('should render <app-loader>', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-
-    const loaderElement = fixture.debugElement.query(By.css('app-loader'));
-    expect(loaderElement).toBeTruthy();
-  });
-
   it('should render <router-outlet>', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();

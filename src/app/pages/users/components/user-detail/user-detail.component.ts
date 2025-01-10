@@ -27,7 +27,7 @@ export class UserDetailComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
 
   // to hold user details
-  user!: User;
+  user: User | null = null;
 
   // to hold posts list
   posts: Post[] = [];

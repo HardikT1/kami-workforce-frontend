@@ -60,10 +60,9 @@
             }
           </div>
           <div class="d-flex align-items-center justify-content-end gap-1">
-            <i
-              class="bi bi-folder-fill text-muted"
-              [routerLink]="['/albums', album.id]"
-            ></i>
+            <a [routerLink]="['/users', album.userId]">
+              <i class="bi bi-folder-fill text-muted"></i>
+            </a>
             <a [routerLink]="['/users', album.userId]">
               <i class="bi bi-person-fill text-muted"></i>
             </a>

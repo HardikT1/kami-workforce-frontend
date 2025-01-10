@@ -63,10 +63,10 @@ describe('PostDetailComponent', () => {
     component.ngOnInit();
     tick();
     expect(component.fetchPostDetails).toHaveBeenCalledWith(1);
-    expect(component.post.title).toBe(
+    expect(component.post?.title).toBe(
       'sunt aut facere repellat provident occaecati excepturi optio reprehenderit'
     );
-    expect(component.post.body).toBe(
+    expect(component.post?.body).toBe(
       'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas'
     );
   }));

@@ -22,7 +22,7 @@ export class PostDetailComponent implements OnInit {
   activatedRoute = inject(ActivatedRoute);
 
   // to hold post details
-  post!: Post;
+  post: Post | null = null;
 
   // DestroyRef to manage the lifecycle of subscriptions
   private destroyRef = inject(DestroyRef);

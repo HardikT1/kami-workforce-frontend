@@ -22,7 +22,7 @@ export class PhotoDetailComponent implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
 
   // photo details
-  photo!: Photo;
+  photo: Photo | null = null;
 
   // DestroyRef to manage the lifecycle of subscriptions
   private destroyRef = inject(DestroyRef);

@@ -81,12 +81,12 @@ describe('PhotoDetailComponent', () => {
     expect(component.fetchPhotoDetails).toHaveBeenCalledWith(1);
 
     // Verify the photo data was correctly fetched
-    expect(component.photo.title).toBe(
+    expect(component.photo?.title).toBe(
       'accusamus beatae ad facilis cum similique qui sunt'
     );
-    expect(component.photo.url).toBe('https://via.placeholder.com/600/92c952');
-    expect(component.photo.albumId).toBe(1);
-    expect(component.photo.thumbnailUrl).toBe(
+    expect(component.photo?.url).toBe('https://via.placeholder.com/600/92c952');
+    expect(component.photo?.albumId).toBe(1);
+    expect(component.photo?.thumbnailUrl).toBe(
       'https://via.placeholder.com/150/92c952'
     );
   }));

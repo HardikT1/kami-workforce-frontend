@@ -4,7 +4,7 @@
     <div class="col-md-6">
       <!-- Profile Header -->
       <div class="card shadow-sm mb-4">
-        <div class="card-body text-center">
+        <div class="card-body bg-light text-center">
           <!-- Profile Image -->
           <img
             src="https://via.placeholder.com/100"
@@ -14,9 +14,9 @@
             height="100"
           />
           <!-- Name -->
-          <h4 class="fw-bold">{{ user.name }}</h4>
+          <h4 class="fw-bold">{{ user?.name }}</h4>
           <!-- Username -->
-          <p class="text-muted">&#64;{{ user.username }}</p>
+          <p class="text-muted">&#64;{{ user?.username }}</p>
         </div>
       </div>
 
@@ -27,27 +27,27 @@
           <div class="row mt-3 g-3">
             <div class="col-md-4">
               <strong>Name:</strong>
-              <p>{{ user.name }}</p>
+              <p>{{ user?.name }}</p>
             </div>
             <div class="col-md-4">
               <strong>Email:</strong>
-              <p>{{ user.email }}</p>
+              <p>{{ user?.email }}</p>
             </div>
             <div class="col-md-4">
               <strong>Phone:</strong>
-              <p>{{ user.phone }}</p>
+              <p>{{ user?.phone }}</p>
             </div>
             <div class="col-md-4">
               <strong>Website:</strong>
               <p>
-                <a href="{{ user.website }}" target="_blank">{{
-                  user.website
+                <a href="{{ user?.website }}" target="_blank">{{
+                  user?.website
                 }}</a>
               </p>
             </div>
             <div class="col-md-4">
               <strong>Company:</strong>
-              <p>{{ user.company.name }}</p>
+              <p>{{ user?.company?.name }}</p>
             </div>
           </div>
         </div>

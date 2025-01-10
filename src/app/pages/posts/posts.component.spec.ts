@@ -135,19 +135,51 @@ describe('PostsComponent', () => {
     expect(errorArg.message).toBe('Error fetching posts');
   }));
 
-  it('should append query parameters correctly', fakeAsync(() => {
+  it('should append query parameters correctly when values are provided', fakeAsync(() => {
     spyOn(router, 'navigate').and.callThrough();
+
+    // Set up parameters with values
     component.params._page = 2;
+    component.params._limit = 10;
+    component.params._sort = 'title';
+    component.params._order = 'asc';
+    component.params.filter = 'test';
+
     component.appendQueryParams();
     tick();
+
     expect(router.navigate).toHaveBeenCalledWith([], {
       relativeTo: jasmine.any(Object),
       queryParams: {
         page: 2,
         limit: 10,
-        sort: '',
-        order: '',
-        filter: '',
+        sort: 'title',
+        order: 'asc',
+        filter: 'test',
+      },
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
+  }));
+
+  it('should append only query parameters with values', fakeAsync(() => {
+    spyOn(router, 'navigate').and.callThrough();
+
+    component.params._page = 2;
+    component.params._limit = 10;
+    component.params._sort = '';
+    component.params._order = 'desc';
+    component.params.filter = '  ';
+
+    component.appendQueryParams();
+    tick();
+
+    expect(router.navigate).toHaveBeenCalledWith([], {
+      relativeTo: jasmine.any(Object),
+      queryParams: {
+        page: 2,
+        limit: 10,
+        order: 'desc',
       },
       queryParamsHandling: 'merge',
       replaceUrl: true,

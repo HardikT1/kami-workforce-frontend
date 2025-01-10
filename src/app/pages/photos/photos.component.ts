@@ -148,15 +148,35 @@ export class PhotosComponent implements OnInit {
    * This ensures the URL reflects the current state of pagination, sorting, and filtering.
    */
   async appendQueryParams(): Promise<void> {
+    const queryParams: {
+      page?: number;
+      limit?: number;
+      sort?: string;
+      order?: string;
+      filter?: string;
+    } = {};
+
+    // Add parameters only if they have a value
+    if (this.params._page) {
+      queryParams['page'] = this.params._page;
+    }
+    if (this.params._limit) {
+      queryParams['limit'] = this.params._limit;
+    }
+    if (this.params._sort) {
+      queryParams['sort'] = this.params._sort;
+    }
+    if (this.params._order) {
+      queryParams['order'] = this.params._order;
+    }
+    if (this.params.filter?.trim()) {
+      queryParams['filter'] = this.params.filter.trim();
+    }
+
+    // Navigate with filtered query params
     await this.router.navigate([], {
       relativeTo: this.activatedRoute,
-      queryParams: {
-        page: this.params._page,
-        limit: this.params._limit,
-        sort: this.params._sort,
-        order: this.params._order,
-        filter: this.params.filter,
-      },
+      queryParams,
       queryParamsHandling: 'merge',
       replaceUrl: true,
     });
