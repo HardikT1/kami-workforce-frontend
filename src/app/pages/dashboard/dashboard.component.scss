@@ -1,7 +1,13 @@
 .text-justify {
   text-align: justify;
 }
+
 .photo-card {
   width: 150px;
   height: 150px;
+}
+
+.recent-post {
+  height: calc(100vh - 80px);
+  overflow-y: auto;
 }

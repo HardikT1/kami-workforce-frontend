@@ -13,26 +13,42 @@ export class SidenavComponent {
     url: string;
     title: string;
     icon: string;
+    queryParams?: {
+      page: number,
+      limit: number
+    }
   }[] = [
-    {
-      url: 'dashboard',
-      title: 'Dashboard',
-      icon: 'bi bi-stack',
-    },
-    {
-      url: 'posts',
-      title: 'Posts',
-      icon: 'bi bi-file-post',
-    },
-    {
-      url: 'albums',
-      title: 'Albums',
-      icon: 'bi bi-folder-fill',
-    },
-    {
-      url: 'photos',
-      title: 'Photos',
-      icon: 'bi bi-images',
-    },
-  ];
+      {
+        url: 'dashboard',
+        title: 'Dashboard',
+        icon: 'bi bi-stack',
+      },
+      {
+        url: 'posts',
+        title: 'Posts',
+        icon: 'bi bi-file-post',
+        queryParams: {
+          page: 1,
+          limit: 10
+        }
+      },
+      {
+        url: 'albums',
+        title: 'Albums',
+        icon: 'bi bi-folder-fill',
+        queryParams: {
+          page: 1,
+          limit: 10
+        }
+      },
+      {
+        url: 'photos',
+        title: 'Photos',
+        icon: 'bi bi-images',
+        queryParams: {
+          page: 1,
+          limit: 10
+        }
+      },
+    ];
 }
