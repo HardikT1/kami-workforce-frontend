@@ -144,6 +144,14 @@ export class PhotosComponent implements OnInit {
   }
 
   /**
+   * Clear the filter, sort order, sort direction
+   */
+  clearFilters(): void {
+    this.params = { ...this.params, _sort: '', _order: '', filter: '' };
+    this.appendQueryParams();
+  }
+
+  /**
    * Updates the route with the current query parameters and merges them with existing ones.
    * This ensures the URL reflects the current state of pagination, sorting, and filtering.
    */
@@ -177,7 +185,6 @@ export class PhotosComponent implements OnInit {
     await this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams,
-      queryParamsHandling: 'merge',
       replaceUrl: true,
     });
   }
